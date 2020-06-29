@@ -21,7 +21,7 @@ main(int argc, char* argv[])
 		if(predNum < 20)
 			// if the number of properties is smaller than 20, we find the optimal partitioning results.
 			test->unionEdgeForEnum();
-		else if(predNum >= 20 && predNum < 100)
+		else if(predNum >= 20 && predNum < 120)
 			test->unionEdgeForGreed();
 		else
 			test->greed2();
