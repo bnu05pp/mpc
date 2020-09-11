@@ -1,4 +1,4 @@
-This is the codes of the paper, Minimum Property-Cut RDF Graph Partitioning: Minimum Property-Cut RDF Graph Partitioning to Minimize Inter-Partition Joins in Distributed SPARQL Execution, submitted in SIGMOD 2021.
+This is the codes of the paper, Minimum Property-Cut RDF Graph Partitioning to Minimize Inter-Partition Joins in Distributed SPARQL Execution, submitted in SIGMOD 2021.
 
 COMPILE
 	
