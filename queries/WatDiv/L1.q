@@ -4,3 +4,4 @@ SELECT ?v0 ?v2 ?v3 WHERE {
 	?v2	sorg:caption	?v3 .
 	?v0	wsdbm:likes	?v2 .
 }
+
