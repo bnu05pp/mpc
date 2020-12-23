@@ -46,7 +46,7 @@ main(int argc, char * argv[])
 	string property_file_name = RDF_data + "_property.txt";
         string crossing_file_name = RDF_data + "_intcrossingEdges.txt";
         string out_p_file_name = RDF_data + "crossingEdges.txt";
-	string sign = "\t";
+	string sign=(string(argv[2])=="1")?" ":"\t";
 	
     map<int, string> IDEntityMap;
 	count = 0;
