@@ -37,82 +37,82 @@ split(string textline, string tag){
 int
 main(int argc, char * argv[])
 {
-    long count = 0, crossing_count = 0, crossing_p_count = 0;
-    string str;  
-    string file_name = (argv[1]);
-	string data_name = argv[2];
-	string sign=(string(argv[3])=="1")?" ":"\t";
-
-	string out_triple_int_path = data_name + "_int_triples.nt";
-	ofstream outFile(out_triple_int_path.c_str());
-    map<string, int> eMap;
-	map<string, int> pMap;
+    long count = 0, cur_id = 0;
+    string str; 
+	string RDF_data = argv[1]; 
+    string entity_file_name = RDF_data + "_entity.txt";
+	string partition_file_name = RDF_data + "_intInternalPoints.txt";
+	string out_file_name = RDF_data + "InternalPoints.txt";
+	string property_file_name = RDF_data + "_property.txt";
+        string crossing_file_name = RDF_data + "_intcrossingEdges.txt";
+        string out_p_file_name = RDF_data + "crossingEdges.txt";
+	string sign = "\t";
+	
+    map<int, string> IDEntityMap;
 	count = 0;
-	int p_count = 0, e_count = 1;
-    ifstream fin(file_name.c_str()); 
-    while( getline(fin, str) )
+    ifstream fin12(entity_file_name.c_str()); 
+    while( getline(fin12, str) )
     {   
-	string textline = str;
-	str.resize(str.length()-2); 
-//	cout << str << endl;
         vector<string> TermArr = split(str, sign);
-       
-	//eSet.insert(TermArr[0]);
-	if(eMap.count(TermArr[0]) == 0){
-                eMap.insert(make_pair(TermArr[0], e_count));
-                e_count++;
-        }
 
-	if(pMap.count(TermArr[1]) == 0){
-                pMap.insert(make_pair(TermArr[1], p_count));
-                p_count++;
-        }
-
-	if (TermArr[2].at(0) == ('<') || TermArr[2].at(0) == ('_')) {
-		//eSet.insert(TermArr[2]);
-		if(eMap.count(TermArr[2]) == 0){
-        	        eMap.insert(make_pair(TermArr[2], e_count));
-                	e_count++;
-        	}
-		outFile << eMap[TermArr[0]] << "\t" << pMap[TermArr[1]] << "\t" << eMap[TermArr[2]] << " ." << endl;
-	}
-/*
-	if(pMap.count(TermArr[1]) == 0){
-		pMap.insert(make_pair(TermArr[1], p_count));
-		p_count++;
-	}
-*/	//pMap[TermArr[1]]++; 
-//	outFile << eMap[TermArr[0]] << "\t" << pMap[TermArr[1]] << "\t" << eMap[TermArr[2]] << " ." << endl;
+	cur_id = atoi(TermArr[1].c_str());
+	IDEntityMap.insert(make_pair(cur_id, TermArr[0]));
 
 	if(count++ % 100000 == 3){
             cout << count << "---" << endl;
         }
     }
 
-	string p_path_str = data_name + "_property.txt";
-	ofstream outFile2(p_path_str.c_str());
-	for(map<string, int>::iterator iter1 = pMap.begin(); iter1 != pMap.end(); iter1++){
-		outFile2 << iter1->first << "\t" << iter1->second << endl;
-	}
-	outFile2.close();
-	outFile.close();
-	
-	string path_str = data_name + "_entity.txt";
-        ofstream outFile1(path_str.c_str());
-        for(map<string, int>::iterator iter = eMap.begin(); iter != eMap.end(); iter++){
-                outFile1 << iter->first << "\t" << iter->second << endl;
+	map<int, string> IDPropertyMap;
+        count = 0;
+    ifstream fin1(property_file_name.c_str());
+    while( getline(fin1, str) )
+    {
+        vector<string> TermArr = split(str, sign);
+
+        cur_id = atoi(TermArr[1].c_str());
+        IDPropertyMap.insert(make_pair(cur_id, TermArr[0]));
+
+        if(count++ % 100000 == 3){
+            cout << count << "###" << endl;
         }
+    }
+
+	count = 0;
+	ifstream fin234(crossing_file_name.c_str()); 
+	ofstream outFile134(out_p_file_name.c_str());
+	while( getline(fin234, str) )
+	{
+		vector<string> TermArr = split(str, sign);
+
+		cur_id = atoi(TermArr[0].c_str());
+		outFile134 << IDPropertyMap[cur_id] << "\t" << TermArr[1] << "\t" << TermArr[2] << endl;
+
+		if(count++ % 100000 == 3){
+            		cout << count << "..." << TermArr.size() << endl;
+        	}
+	}
+
+	outFile134.close();
+
+	count = 0;
+	ifstream fin(partition_file_name.c_str());
+        ofstream outFile1(out_file_name.c_str());
+    while( getline(fin, str) )
+    {
+        vector<string> TermArr = split(str, sign);
+
+                cur_id = atoi(TermArr[0].c_str());
+                outFile1 << IDEntityMap[cur_id] << "\t" << TermArr[1] << endl;
+
+                if(count++ % 100000 == 3){
+            cout << count << "+++" << endl;
+        }
+    }
+
         outFile1.close();
-
-	string meta_path_str = data_name + "_meta.txt";
-	ofstream outFile3(meta_path_str.c_str());
-        outFile3 << count << endl;
-	outFile3 << eMap.size() << endl;
-	outFile3 << pMap.size() << endl;
-        outFile3.close();
-
-	cout << "edges' number: " << count << endl;
-	cout << "entites' number: " << eMap.size() << endl;
-	cout << "properties' number: " << pMap.size() << endl;
+	
+	cout << "count: " << count << endl;
 	return 0;
 }
+
