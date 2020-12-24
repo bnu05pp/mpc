@@ -19,7 +19,7 @@ RUN
 	Results are in Data_nameInternalPoints.txt and Data_namecrossingEdges.txt(1,2,3)
 	
 
-The above version of mpc is to load the whole RDF dataset into memory. You may not have enough memory for your RDF datasets. Thus, we also provide another version that uses less memory. It is slower but needs less memory.
+The above version of mpc needs a lot of memory, and you may not have enough memory. Thus, we also provide another version that uses less memory. It is slower but needs less memory.
 
 COMPILE
 	
