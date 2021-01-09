@@ -7,6 +7,7 @@
 #include <stdlib.h>
 #include <vector>
 #include <sstream>
+#include <ctime>
 
 using namespace std;
 
@@ -37,6 +38,10 @@ split(string textline, string tag){
 int
 main(int argc, char * argv[])
 {
+	clock_t st,ed;
+	double endtime;
+	st = clock();
+	
     long count = 0, crossing_count = 0, crossing_p_count = 0;
     string str;  
     string file_name = (argv[1]);
@@ -88,6 +93,8 @@ main(int argc, char * argv[])
             cout << count << "---" << endl;
         }
     }
+	ed = clock();
+	cout << "mapping entities to ids : " << (double)(ed - st)/CLOCKS_PER_SEC << "s." << endl;
 
 	string p_path_str = data_name + "_property.txt";
 	ofstream outFile2(p_path_str.c_str());
