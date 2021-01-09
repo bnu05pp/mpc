@@ -20,13 +20,14 @@ main(int argc, char* argv[])
 	getline(meta_in,line);
 	int eNum = atoi(line.c_str());
 	
-	st=clock();
+	//st=clock();
 		graph* test=new graph();
 		test->init(eNum);
 		test->RDF=name;
 		test->part=part;
 		
 		test->loadGraph(txt_name,sign);
+	st=clock();
 		int predNum = test->getPreNum();
 		if(predNum < 20)
 			// if the number of properties is smaller than 20, we find the optimal partitioning results.
