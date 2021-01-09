@@ -77,7 +77,8 @@ main(int argc, char * argv[])
             cout << count << "###" << endl;
         }
     }
-
+	clock_t st, ed;
+	st = clock();
 	count = 0;
 	ifstream fin234(crossing_file_name.c_str()); 
 	ofstream outFile134(out_p_file_name.c_str());
@@ -111,7 +112,8 @@ main(int argc, char * argv[])
     }
 
         outFile1.close();
-	
+	ed = clock();
+	cout << "projecting results : " << (double)(ed - st)/CLOCKS_PER_SEC << "s. " << endl;
 	cout << "count: " << count << endl;
 	return 0;
 }
