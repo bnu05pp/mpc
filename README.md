@@ -1,7 +1,7 @@
 #MPC
 
 ## Overview
-Minimum Property-Cut (MPC) is a vertex-centric RDF graph partitioning approach, where the objective function is to minimize the cuts to the number of distinct crossing properties. This approach avoids inter-partition joins in a wider set of SPARQL workloads in the context of distributed SPARQL query evaluation.
+Minimum Property-Cut (MPC) is a vertex-centric RDF graph partitioning approach, where the objective function is to minimize the cuts to the number of distinct crossing properties. This approach can be used to avoid inter-partition joins in a wider set of SPARQL workloads in the context of distributed SPARQL query evaluation.
 
 ## Install Steps
 
