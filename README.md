@@ -29,3 +29,5 @@ The partitioning results are written in the file named `#output#InternalPoints.t
 ## Benchmark Queries
 
 The benchmark queries used in our experimental evaluation exists in #queries# folder.
+
+If you encounter any problems, please send emails to me (email address: hnu16pp@hnu.edu.cn).
