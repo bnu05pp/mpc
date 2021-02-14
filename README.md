@@ -1,42 +1,31 @@
-This is the codes of the paper, Minimum Property-Cut RDF Graph Partitioning to Minimize Inter-Partition Joins in Distributed SPARQL Execution.
+#MPC
 
-COMPILE
+## Overview
+Minimum Property-Cut (MPC) is a vertex-centric RDF graph partitioning approach, where the objective function is to minimize the cuts to the number of distinct crossing properties. This approach avoids inter-partition joins in a wider set of SPARQL workloads in the context of distributed SPARQL query evaluation.
+
+## Install Steps
+
+System Requirement: 64-bit linux server with GCC.
+*We have tested on linux server with CentOS 7.4 x86_64 where the version of GCC is 5.4.0.*
+
+You can install gStore v0.3.0-D in one command. Just run
 	
-	g++ main.cpp -std=c++11 -o main
+	g++ main.cpp -std=c++11 -o mpc
+
+to compile the code and build executable "mpc".
+
+## Usage
+mpc is used to partition an RDF graph.
 
 RUN
 	
-	./main RDFData Data_name tag part
-	(
-		tag:split the triple
-			1 " "
-			2 "\t"
-
-		part:the number of partitons
-	)
-	Ex:	./main /data/RDFData/LUBM/LUBM10M.nt LUBM10M 1 4
-
-	Results are in Data_nameInternalPoints.txt and Data_namecrossingEdges.txt(1,2,3)
+	./mpc rdf_triple_file_name output separator number_of_parts
 	
 
-The above version of mpc needs a lot of memory, and you may not have enough memory. Thus, we also provide another version that uses less memory. It is slower but needs less memory.
+Now, mpc only support RDF datasets in NT format. Each line is a triple of subject, property and object, where the tab "\t" or the space " " are used as the separator. If `separator` in the above command equals to "1", the separator is the space " "; if `separator` in the above command equals to "2", the separator is the tab "\t".
 
-COMPILE
-	
-	chmod 777 build.sh
-	./build.sh
+The partitioning results are written in the file named `#output#InternalPoints.txt`, where each line in the file consists of two parts: the first part is the URI of an resouce and the second part is the identifier of the partition that the resouce belongs to.
 
-RUN
-	
-	./run.sh RDFData Data_name tag part
-	(
-		tag:split the triple
-			1 " "
-			2 "\t"
+## Benchmark Queries
 
-		part:the number of partitons
-	)
-	Ex:	./run.sh /data/RDFData/LUBM/LUBM10M.nt LUBM10M 1 4
-
-	Results are in Data_nameInternalPoints.txt and Data_namecrossingEdges.txt(1,2,3)
-
+The benchmark queries used in our experimental evaluation exists in #queries# folder.
