@@ -8,7 +8,7 @@ Minimum Property-Cut (MPC) is a vertex-centric RDF graph partitioning approach, 
 System Requirement: 64-bit linux server with GCC.
 *We have tested on linux server with CentOS 7.4 x86_64 where the version of GCC is 5.4.0.*
 
-You can install gStore v0.3.0-D in one command. Just run
+You can compile mpc in one command. Just run
 	
 	g++ main.cpp -std=c++11 -o mpc
 
