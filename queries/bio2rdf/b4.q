@@ -8,10 +8,10 @@ PREFIX uniprot:<http://bio2rdf.org/uniprot>
 
 
 SELECT ?pharmgkbid WHERE{
-	?pharmgkbid pharmkb:xref drug:DB00126 .
-	?pharmgkbid pharmkb:xref ?pccid .
-	?DDIassociation pharmkb:chemical ?pccid .
-	?DDIassociation pharmkb:event ?DDIevent .
-	?DDIassociation pharmkb:chemical ?drug2 .
-	?DDIassociation pharmkb:p-value ?pvalue .
+	?pharmgkbid <http://bio2rdf.org/pharmgkb_vocabulary:xref> <http://bio2rdf.org/drugbank:DB00126> .
+	?pharmgkbid <http://bio2rdf.org/pharmgkb_vocabulary:xref> ?pccid .
+	?DDIassociation <http://bio2rdf.org/pharmgkb_vocabulary:chemical> ?pccid .
+	?DDIassociation <http://bio2rdf.org/pharmgkb_vocabulary:event> ?DDIevent .
+	?DDIassociation <http://bio2rdf.org/pharmgkb_vocabulary:chemical> ?drug2 .
+	?DDIassociation <http://bio2rdf.org/pharmgkb_vocabulary:p-value> ?pvalue .
 }
