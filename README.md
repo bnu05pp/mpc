@@ -31,3 +31,7 @@ The partitioning results are written in the file named `#output#InternalPoints.t
 The benchmark queries used in our experimental evaluation exists in #queries# folder.
 
 If you encounter any problems, please send emails to me (email address: hnu16pp@hnu.edu.cn).
+
+## Acknowledgement
+
+The code is also contributed by Cen Yan (email address: yan_cen@hnu.edu.cn) and Chengjun Liu (email address: lcj2021@hnu.edu.cn).
