@@ -24,7 +24,7 @@ RUN
 
 Now, mpc only support RDF datasets in NT format. Each line is a triple of subject, property and object, where the tab "\t" or the space " " are used as the separator. If `separator` in the above command equals to "1", the separator is the space " "; if `separator` in the above command equals to "2", the separator is the tab "\t".
 
-The partitioning results are written in the file named `#output#InternalPoints.txt`, where each line in the file consists of two parts: the first part is the URI of an resouce and the second part is the identifier of the partition that the resouce belongs to.
+The partitioning results are written in the file named `#output#InternalPoints.txt`, where each line in the file consists of two parts: the first part is the URI of an resource and the second part is the identifier of the partition that the resource belongs to.
 
 ## Benchmark Queries
 
